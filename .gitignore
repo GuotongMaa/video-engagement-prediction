@@ -16,3 +16,8 @@ models/*.pth
 models/*.pt
 *.zip
 *.nii.gz
+# Local datasets / generated notebook intermediates
+data/*.csv
+*.csv
+*.npy
+*.pkl

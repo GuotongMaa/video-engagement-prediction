@@ -1,35 +1,39 @@
 # Video Engagement Prediction
 
-Model comparison and stacking ensemble for lecture engagement prediction from metadata and transcript features.
+## Objective
+Predict engagement outcomes for educational videos from metadata and content-derived features.
 
-## Problem
-Predict engagement outcomes of educational videos from structured features.
+## Method
+- Feature engineering (including aggregate lexical and speaking features).
+- Model comparison: logistic regression, random forest, gradient boosting.
+- Stacking ensemble with cross-validation.
 
-## Approach
-Feature engineering, model comparison, and stacking ensemble evaluation.
+## Repository Structure
+- `notebooks/` experiment notebooks.
+- `src/` reusable code modules.
+- `results/` metrics and plots.
+- `assets/` README figures.
+- `models/` saved models (optional).
+- `data/` local dataset directory (not versioned).
 
-## Highlights
-- Feature engineering including lexical complexity and speaking intensity
-- Model comparison: logistic regression, random forest, gradient boosting
-- Stacking ensemble with 5-fold evaluation (CV-aligned)
+## Data Access
+Use local lecture-feature data under `data/`.
 
-## Data
-Video lecture features (`data/lectures_dataset.csv`).
+## Run
+1. Put `lectures_dataset.csv` under `data/`.
+2. Run `notebooks/video_engagement_prediction.ipynb`.
+3. Export model-comparison outputs to `results/`.
 
-## Project Structure
-- notebooks/ - Main workflow notebooks
-- data/ - Datasets (as noted above)
-- models/ - Model checkpoints (optional)
-- results/ - Metrics, plots, and outputs
-- assets/ - Figures for README
+## Result Artifacts
+- LR/RF/GB comparison table
+- Stacking vs single-model comparison
+- PR/ROC curves
 
-## How to Run
-- Open `notebooks/video_engagement_prediction.ipynb`
-- Run all cells to reproduce metrics
-
-## Status
-Metrics reported in the CV are from prior runs; rerun the notebook to reproduce them.
-
-## Results Showcase
-- Recommended outputs in `results/`: model comparison chart (LR/RF/GB), stacking vs single-model comparison, and PR curve.
-- Add final figures to `assets/` and link them in this section after reruns.
+## Validated Baseline Run
+- binary label threshold (median of `median_engagement`): `0.0611`
+- `accuracy`: `0.7732`
+- `f1`: `0.7749`
+- `roc_auc`: `0.8561`
+- `pr_auc`: `0.8696`
+- metrics file: `results/metrics_video_baseline.json`
+- model file: `results/artifacts/video_logreg.joblib`
